@@ -17,17 +17,16 @@ class Game {
   }
 
   registerEvents() {
-    this.container.addEventListener('keyup', (event) => {
-      // Получаем символ, введенный с клавиатуры
+    const currentSymbolElement = this.currentSymbol;
+    document.addEventListener('keydown', (event) => {
+      // Получаем введенный символ
       const inputSymbol = event.key.toLowerCase();
-  
-      // Получаем текущий символ, который нужно ввести
-      const currentSymbolText = this.currentSymbol.textContent.toLowerCase();
-  
-      // Сравниваем введенный символ с текущим
-      if (inputSymbol === currentSymbolText) {
+      
+      if (inputSymbol === currentSymbolElement.textContent.toLowerCase()) {
+        // Вызываем метод this.success()
         this.success();
       } else {
+        // Вызываем метод this.fail()
         this.fail();
       }
     });
