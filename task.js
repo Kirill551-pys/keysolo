@@ -17,21 +17,18 @@ class Game {
   }
 
   registerEvents() {
-    const currentSymbolElement = this.currentSymbol;
     document.addEventListener('keydown', (event) => {
-      // Получаем введенный символ
+      const currentSymbolElement = this.currentSymbol; // Получаем текущий символ внутри обработчика события
       const inputSymbol = event.key.toLowerCase();
-      
+
       if (inputSymbol === currentSymbolElement.textContent.toLowerCase()) {
-        // Вызываем метод this.success()
         this.success();
       } else {
-        // Вызываем метод this.fail()
         this.fail();
       }
     });
   }
-
+   
   success() {
     if(this.currentSymbol.classList.contains("symbol_current")) this.currentSymbol.classList.remove("symbol_current");
     this.currentSymbol.classList.add('symbol_correct');
